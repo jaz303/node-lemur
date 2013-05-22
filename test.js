@@ -1,4 +1,4 @@
 var lemur = require('./index.js');
 
-lemur.hello();
+console.log(lemur.getMidiOutputs());
 
