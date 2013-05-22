@@ -1,0 +1,18 @@
+v0.0.2
+======
+
+- session object
+- client object (possibly just internal to session)
+- port object
+- ability to play MIDI data immediately
+- notification on configuration changed
+
+v0.0.3
+======
+
+- improve MIDI API
+
+v0.0.4
+======
+
+- threaded playback engine
