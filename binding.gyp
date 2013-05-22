@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "bindings",
+      "target_name": "lemur_bindings",
       "include_dirs": [
         "src"
       ],
