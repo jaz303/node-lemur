@@ -6,6 +6,7 @@
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
+  "main": "index",
   "devDependencies": {
     "tape": "~0.2.2"
   },
