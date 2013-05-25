@@ -32,6 +32,14 @@ for (var octave = 0; octave < 12; octave++) {
   }
 }
 
+function noteOn(channel, note, velocity) {
+  return 0x900000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
+}
+
+function noteOff(channel, note, velocity) {
+  return 0x800000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
+}
+
 module.exports = {
   getMidiOutputs: function() {
     return bindings.getMidiOutputs();
@@ -43,5 +51,8 @@ module.exports = {
   
   createSession: function() {
     throw "wut!";
-  }
+  },
+  
+  noteOn: noteOn,
+  noteOff: noteOff
 }
