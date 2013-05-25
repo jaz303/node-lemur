@@ -1,6 +1,6 @@
 {
   "name": "lemur",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "OS X MIDI playback engine for node.js based on Core MIDI",
   "main": "./index",
   "scripts": {
