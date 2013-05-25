@@ -20,19 +20,7 @@ lemur::MidiOutput::~MidiOutput()
     CFRelease(name_);
 }
 
-Handle<Value> lemur::MidiOutput::wrap(MIDIEndpointRef endpoint)
-{
-    HandleScope _;
-    
-    Local<Object> instance = tpl->InstanceTemplate()->NewInstance();
-    
-    MidiOutput *theOutput = new MidiOutput(endpoint);
-    theOutput->Wrap(instance);
-    
-    return _.Close(instance);
-}
-
-void lemur::MidiOutput::Init(Handle<Object> target)
+void lemur::MidiOutput::init(Handle<Object> target)
 {
     HandleScope _;
     
@@ -44,6 +32,18 @@ void lemur::MidiOutput::Init(Handle<Object> target)
     it->SetAccessor(String::New("name"), GetName);
 
     MidiOutput::tpl = Persistent<FunctionTemplate>::New(ft);
+}
+
+Handle<Value> lemur::MidiOutput::wrap(MIDIEndpointRef endpoint)
+{
+    HandleScope _;
+    
+    Local<Object> instance = tpl->InstanceTemplate()->NewInstance();
+    
+    MidiOutput *theOutput = new MidiOutput(endpoint);
+    theOutput->Wrap(instance);
+    
+    return _.Close(instance);
 }
 
 Handle<Value> lemur::MidiOutput::New(const Arguments &args)

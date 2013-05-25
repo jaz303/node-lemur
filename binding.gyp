@@ -5,7 +5,8 @@
       "include_dirs": ["src"],
       "sources": [
         "src/lemur.cpp",
-        "src/midi_output.cpp"
+        "src/midi_output.cpp",
+        "src/midi_client.cpp"
       ],
       "conditions": [
         [ 'OS=="mac"', {

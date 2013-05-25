@@ -5,6 +5,10 @@ module.exports = {
     return bindings.getMidiOutputs();
   },
   
+  createMidiClient: function() {
+    return bindings.createMidiClient();
+  },
+  
   createSession: function() {
     throw "wut!";
   }
