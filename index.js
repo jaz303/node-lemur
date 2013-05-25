@@ -54,12 +54,12 @@ function controlChange(channel, controller, value) {
 
 // 2 bytes
 function programChange(channel, program) {
-  return 0xC000 | ((channel - 1) << 16) | program;
+  return 0xC000 | ((channel - 1) << 8) | program;
 }
 
 // 2 bytes
 function channelAftertouch(channel, value) {
-  return 0xD000 | ((channel - 1) << 16) | program;
+  return 0xD000 | ((channel - 1) << 8) | program;
 }
 
 // 3 bytes
