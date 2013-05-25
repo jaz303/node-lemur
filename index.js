@@ -32,12 +32,40 @@ for (var octave = 0; octave < 12; octave++) {
   }
 }
 
+// 3 bytes
+function noteOff(channel, note, velocity) {
+  return 0x800000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
+}
+
+// 3 bytes
 function noteOn(channel, note, velocity) {
   return 0x900000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
 }
 
-function noteOff(channel, note, velocity) {
-  return 0x800000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
+// 3 bytes
+function aftertouch(channel, note, velocity) {
+  return 0xA00000 | ((channel - 1) << 16) | (NOTES[note] << 8) | velocity;
+}
+
+// 3 bytes
+function controlChange(channel, controller, value) {
+  return 0xB00000 | ((channel - 1) << 16) | (controller << 8) | value;
+}
+
+// 2 bytes
+function programChange(channel, program) {
+  return 0xC000 | ((channel - 1) << 16) | program;
+}
+
+// 2 bytes
+function channelAftertouch(channel, value) {
+  return 0xD000 | ((channel - 1) << 16) | program;
+}
+
+// 3 bytes
+// TODO: value is 14 bit. might be more sensible to map it to range (-1.0,1.0)
+function pitchWheel(channel, value) {
+  return 0xE00000 | ((channel - 1) << 16) | ((value & 0x7F) << 8) | ((value >> 7) & 0x7F);
 }
 
 module.exports = {
