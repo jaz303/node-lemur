@@ -16,9 +16,14 @@ class MidiClient : node::ObjectWrap
 public:
     MidiClient();
     ~MidiClient();
+    
+    inline MIDIClientRef client() { return client_; }
+    inline MIDIPortRef port() { return port_; }
 
 private:
     MIDIClientRef       client_;
+    MIDIPortRef         port_;
+    MIDIPacketList      *packet_list_;
     
 public:
     
@@ -28,6 +33,8 @@ public:
     static Persistent<FunctionTemplate> tpl;
     static void init(Handle<Object> target);
     static Handle<Value> create_instance();
+    
+    static Handle<Value> Send(const Arguments& args);
     
     // static Handle<Value> wrap(MIDIEndpointRef endpoint);
     // 
