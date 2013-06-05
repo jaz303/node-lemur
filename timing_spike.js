@@ -17,13 +17,23 @@ var loops = [];
 
 function fill(currentTime, duration) {
   
+  console.log("beat: " + Math.floor(currentTime / PPQN), "abspulse: " + currentTime);
+  
   loops.forEach(function(loop) {
     
     if (loop.muted)
       return;
+      
+    var loopFn    = loop.fn,
+        loopStart = Math.floor(currentTime / loopFn.duration) * loopFn.duration,
+        fillEnd   = currentTime + duration;
     
-    // work out what offsets this loop needs to be called for,
-    // based on currentTime and duration
+    while (loopStart < fillEnd) {
+      var loopEvents = loopFn(loopStart);
+      // TODO: iterate over loopEvents and deliver only
+      // those we're interested in to the playback engine.
+      loopStart += loopFn.duration;
+    }
     
   });
 }
