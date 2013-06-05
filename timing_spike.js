@@ -29,6 +29,9 @@ function fill(currentTime, duration) {
         fillEnd   = currentTime + duration;
     
     while (loopStart < fillEnd) {
+      // TODO: loopFn should perhaps also receive time window that we're requesting it
+      // to calculate - would improve performance, particularly for any loops that
+      // do intensive calculations
       var loopEvents = loopFn(loopStart);
       // TODO: iterate over loopEvents and deliver only
       // those we're interested in to the playback engine.
